@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Todo Boss - Commenti{% endblock title %}
+
+{% block content %}
+
+            <h2 class="h2-responsive my-5">
+                    Tutti i commenti per il Post:
+            </h2>
+        <div class="row d-flex justify-content-center card-deck">
+
+            {% for comment in commentlist %}
+
+                <div class="card narrower small mb-5 mt-3">
+                
+                    <!-- Card content -->
+                    <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="font-weight-bolder card-title text-center"><i class="fas fa-user-astronaut mr-2"></i> {{ comment.autore }}<br><br>
+                    {{comment.testo}}</h4>
+                    <!-- Text -->
+                    <!-- Button -->
+                    </div>
+                
+                    <!-- Card footer -->
+                    <div class="card-footer text-muted text-center">
+                    Data: {{ comment.creato }}
+                    </div>
+                
+                </div>
+                {% empty %}
+                <div class="container">
+                    <p class="font-weight-bolder my-5">Non ci sono ancora Commenti al momento.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+{% endblock content %}

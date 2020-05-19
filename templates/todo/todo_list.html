@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Todo Boss - Todo{% endblock title %}
+
+{% block content %}
+        {% if user.is_authenticated %}
+        <h2 class="h2-responsive my-5">Benvenuto, 
+        <small class="text-bold font-weight-bolder text-uppercase">{{user.username}}</small><br><br>
+                Ecco i tuoi Todo:
+        </h2>
+        {% endif %}
+
+        {% block todo %} {% include 'components/todo-grid.html' %} {% endblock todo %}
+
+{% endblock content %}

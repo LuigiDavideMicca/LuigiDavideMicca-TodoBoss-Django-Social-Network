@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+  {% if user.is_authenticated %}
+  <div class="jumbotron text-center blue-grey lighten-5 my-5">
+
+  <!-- Title -->
+  <h2 class="card-title h2">Benvenuto, 
+      <span class="font-weight-bolder text-uppercase">{{user.username}}</span>
+  </h2>
+
+  <!-- Subtitle -->
+  <p class="indigo-text my-4 font-weight-bold">Todo Boss è il tuo task manager personale</p>
+
+  <!-- Grid row -->
+  <div class="row d-flex justify-content-center">
+
+    <!-- Grid column -->
+    <div class="col-xl-7 pb-2">
+
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga aliquid dolorem ea distinctio exercitationem delectus qui, quas eum architecto, amet quasi accusantium, fugit consequatur ducimus obcaecati numquam molestias hic itaque accusantium doloremque laudantium, totam rem aperiam.</p>
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+
+  <hr class="my-4 pb-2">
+  <p class="indigo-text my-2 font-weight-bold">Inizia da qua</p>
+  <a class="btn" type="submit" href="{% url 'todo_nuovo' %}">Nuovo Todo<i class="fas fa-plus-circle ml-2"></i></a>
+  <a class="btn" type="submit" href="{% url 'user_page' %}">Vai al tuo profilo<i class="fas fa-user-ninja ml-2"></i></a>
+  <hr class="mt-4">
+  <p class="indigo-text my-2 font-weight-bold">Oppure visita le pagine principali</p>
+  <a class="btn " href="{% url 'todo_list' %}" >Tutti i Todo<i class="fas fa-eye ml-2"></i></a>
+  <a class="btn " href="{% url 'social_list' %}" >Todo condivisi dagli utenti<i class="fas fa-user-circle ml-2"></i></a>
+
+</div>
+  {% else %}
+    <div class="jumbotron card card-image my-5" style="background-image: url(https://images.unsplash.com/photo-1568781269551-3e3baf5ec909?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+      <div class="text-white text-center py-5 px-4">
+        <div>
+          <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Todo Boss, il tuo block notes virtuale</strong></h2>
+          <p class="mx-5 mb-5">Crea le tue note private per non dimenticare mai tutti i tuoi impegni!
+          </br></br>
+          Oppure condividi i tuoi Todo con gli altri utenti, potrai far sapere alla community i tuoi impegni e ricevere commenti o aiuto.
+          </p>
+          <a href="{% url 'login' %}" class="btn btn-outline-success">
+            Log In</a>
+            <a href="{% url 'signup' %}" class="btn btn-outline-warning ml-2">
+            Registrati
+          </a>
+
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Todo Boss - Elimina il Todo{% endblock title %}
+{% block content %}
+
+    <h5 class="text-uppercase font-weight-bold my-5">Elimina il todo</h5>
+
+    <form action="" method="post"> {% csrf_token %}
+        <p>Sei sicuro di voler eliminare il todo {{todo.titolo}}?</p>
+        <input type="submit" class="btn btn-danger my-5" value="Conferma">
+    </form>
+
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Profilo Personale{% endblock title %}
+
+{% block content %}
+
+  {% if user.is_authenticated %}
+
+  <!-- Title -->
+<div class="card card-cascade wider my-5">
+
+  <!-- Card image -->
+  <div class="view view-cascade overlay">
+    <img class="card-img-top" src="{{user.cover.url}}" alt="{{user.username}}">
+    <a href="#!">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body card-body-cascade text-center pb-0">
+
+    <!-- Title -->
+    <h4 class="card-title my-2"><strong>Ciao, {{user.username}}</strong></h4>
+    <img src="{{user.immagine.url}}" class="my-3 img-thumbnail z-depth-1" alt="{{user.username}}">
+    <h5 class="blue-text pb-2"><strong>{{user.email}}</strong></h5>
+    <a class="card-text">la tua età: {{user.anni}}</a></br></br>
+    <a class="px-2 fa-lg tw-ic">{{user.descrizione}}</a>
+    <!-- Card footer -->
+    <div class="card-footer text-muted text-center mt-4">
+      Il tuo sesso: {{user.sesso}}
+    </div>
+    <a href="{% url 'user_change' user.pk %}" class="btn-md btn peach-gradient mt-4"><i class="fas fa-user-edit mr-3"></i>Modifica Profilo</a>
+    <a href="{% url 'todo_list' %}" class="btn-md btn btn-success mt-4"><i class="far fa-calendar-check mr-3"></i>Vedi tutti i tuoi Todo</a>
+  </div>
+
+</div>
+<h4 class="h4-responsive mt-5 mb-4">I tuoi ultimi Todo:</h4>
+{% block todo %} {% include 'components/todo-grid.html' %} {% endblock todo %}
+
+{% endif %}
+
+<style>
+  .img-thumbnail{
+    max-width: 10rem;
+  }
+</style>
+
+{% endblock content %}

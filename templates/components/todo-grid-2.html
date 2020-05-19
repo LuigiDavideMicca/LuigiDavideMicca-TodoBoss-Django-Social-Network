@@ -1,0 +1,38 @@
+
+<div class="row d-flex justify-content-center card-deck">
+
+    {% for todo in todolist %}
+
+        <div class="card narrower small mb-5 mt-3">
+        
+            <!-- Card content -->
+            <div class="card-body">
+        
+            <!-- Label -->
+            <a class="btn blue-gradient btn-sm float-right"><i class="fas fa-share left"></i>Invia per mail</a>
+            <h5 class="red-text pb-2 pt-1"><i class="fas fa-tags"></i> {{todo.tag}}</h5></a>
+            <!-- Title -->
+            <h4 class="font-weight-bold card-title">{{todo.titolo}}</h4>
+            <!-- Text -->
+            <p class="card-text">{{todo.contenuto}}</p>
+            <!-- Button -->
+            <a href="{% url 'comment_nuovo' todo.pk %}" class="btn-sm btn peach-gradient mt-4"><i class="fas fa-wrench left"></i>Commenta</a>
+            <a href="{% url 'comment_list' todo.pk %}" class="btn-sm btn peach-gradient mt-4"><i class="fas fa-wrench left"></i>Tutti i commenti</a>
+            </div>
+        
+            <!-- Card footer -->
+            <div class="card-footer text-muted text-center">
+            Creato: {{todo.creato}}
+            <br>
+            Scade: {{todo.scade_il}} alle ore: {{todo.orario}}
+            <br><br>
+            {{ todo.comments.count }} commenti al Todo
+            </div>
+        
+        </div>
+        {% empty %}
+        <div class="container">
+              <p class="font-weight-bolder my-5">Non ci sono ancora Todo al momento.</p>
+        </div>
+    {% endfor %}
+</div>

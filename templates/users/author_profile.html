@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card card-cascade wider my-5">
+
+  <!-- Card image -->
+  <div class="view view-cascade overlay">
+  {% for userpage in userlist %}
+    <img class="card-img-top" src="{{userpage.cover.url}}" alt="{{userpage.username}}">
+    <a href="#!">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body card-body-cascade text-center pb-0">
+
+    <!-- Title -->
+    <img src="{{userpage.immagine.url}}" class="my-3 img-thumbnail z-depth-1" alt="{{userpage.username}}">
+    <h3 class="card-title my-4"><strong>{{userpage.username}}</strong></h3>
+    <h5 class="blue-text pb-2"><strong>{{userpage.email}}</strong></h5>
+    <a class="card-text">Età: {{userpage.anni}}</a></br></br>
+    <a class="px-2 fa-lg tw-ic">{{userpage.descrizione}}</a>
+    <!-- Card footer -->
+    <div class="card-footer text-muted text-center mt-4">
+      Sesso: {{userpage.sesso}}
+    </div>
+  </div>
+{% endfor %}
+</div>
+<h4 class="h4-responsive mt-5 mb-4">I suoi ultimi Todo:</h4>
+{% block todo %} {% include 'components/todo-grid-2.html' %} {% endblock todo %}
+
+<style>
+  .img-thumbnail{
+    max-width: 10rem;
+  }
+</style>
+
+{% endblock content %}
